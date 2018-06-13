@@ -30,7 +30,7 @@ public class SensorController {
 
     @PostMapping("/sensor")
     public String sensorSubmit(@ModelAttribute SensorData sensorData) {
-        kafkaTemplate.send("received-sensor-data", sensorData.getId(), sensorData);
+        kafkaTemplate.send(TopicNames.RECEIVED_SENSOR_DATA, sensorData.getId(), sensorData);
         return "sensor";
     }
 
